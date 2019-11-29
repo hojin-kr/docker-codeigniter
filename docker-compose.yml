@@ -1,7 +1,7 @@
 version: '2.2'
 services:
   web:
-    image: aspendigital/codeigniter:latest
+    image: hojindev/codeigniter_hmvc:latest
     ports:
       - "80:80"
     volumes:
