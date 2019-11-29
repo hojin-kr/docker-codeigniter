@@ -23,6 +23,7 @@ RUN { \
     echo 'post_max_size=32M'; \
     echo 'memory_limit=128M'; \
     echo 'date.timezone="UTC"'; \
+    echo 'session.auto_start'; \
   } > /usr/local/etc/php/conf.d/docker-ci-php.ini
 
 RUN { \
@@ -35,6 +36,10 @@ RUN { \
     echo '    Deny from all'; \
     echo '</DirectoryMatch>'; \
   } > /etc/apache2/conf-available/docker-ci-php.conf
+
+  ENV APACHE_DOCUMENT_ROOT=/var/www/html/m
+  RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
+  RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
 
 RUN a2enconf docker-ci-php
 
