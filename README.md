@@ -1,4 +1,4 @@
-# Docker + CodeIgniter 1.7.3
+# Docker + CodeIgniter 1.7.3 + HMVC
 
 This image serves as a starting point for legacy CodeIgniter projects.
 
