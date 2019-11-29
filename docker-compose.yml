@@ -6,3 +6,5 @@ services:
       - "80:80"
     volumes:
       - $PWD:/var/www/html
+    environment:
+      - APACHE_DOCUMENT_ROOT="/var/www/html/m"
