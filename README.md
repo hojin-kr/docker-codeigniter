@@ -1,7 +1,6 @@
-# Docker + CodeIgniter 1.7.3 + HMVC
+# Docker + CodeIgniter + VirtualHost
 
 This image serves as a starting point for legacy CodeIgniter projects.  
-기본 코드이그나이터, PHP 이미지에서 시작됬습니다. HMVC 커스텀 코드이크나이터 환경
 
 ## Supported Tags
 
