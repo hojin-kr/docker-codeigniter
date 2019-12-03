@@ -37,13 +37,15 @@ RUN { \
     echo '</DirectoryMatch>'; \
   } > /etc/apache2/conf-available/docker-ci-php.conf
 
-  ENV APACHE_DOCUMENT_ROOT=/var/www/html/m
-  RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
-  RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
+#ENV APACHE_DOCUMENT_ROOT=/var/www/html/www
+# RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
+# RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
 
 RUN a2enconf docker-ci-php
 
 RUN a2enmod rewrite
+
+COPY --chown=www-data:www-data ./000-default.conf /etc/apache2/sites-available/000-default.conf
 
 COPY --chown=www-data:www-data ./CodeIgniter_1.7.3 /usr/src/CodeIgniter_1.7.3
 
