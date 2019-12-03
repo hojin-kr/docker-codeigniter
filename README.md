@@ -4,23 +4,31 @@ This image serves as a starting point for legacy CodeIgniter projects.
 
 ## Supported Tags
 
-- `latest`: [Dockerfile](https://github.com/hojin-kr/docker-codeigniter-hmvc/blob/master/Dockerfile)
+- `latest`: [Dockerfile](https://github.com/hojin-kr/docker-codeigniter-virtualhost/blob/master/Dockerfile)
 
 ## Quick Start
 
-Start a container using the latest image
-docker-compose.yml 파일을 열어서 멀티 컨테이너로 띄울 서비스를 작성합니다. 
-000-default.conf 파일에 virtual host 정보를 입력합니다.
+깃 저장소를 클론 받습니다.
 
 ```shell
-$ vi docker-compose.yml
+$ git clone https://github.com/hojin-kr/docker-codeigniter-virtualhost.git
 ```
 
-설정을 마쳤으면 최상단 디렉토리에서 도커를 띄워 서비스를 시작합니다.
+000-default.conf 파일에 virtual host 정보를 수정합니다.
+
+```shell
+$ vi 000-default.conf
+```
+
+코드이그나이터 루트 디렉토리에 docker-compose.yml을 복사하고 도커를 띄웁니다.
 
 ```shell
 $ docker-compose up
 ```
+
+## 변경 사항
+    - mysql, mysqli 둘다 설치
+    - session.auto_start = 1
 
 ### Environment Variables
 
