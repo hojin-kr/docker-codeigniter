@@ -1,29 +1,9 @@
 # docker-compose.yml
 version: '2.2'
 services:
-  m:
+  web:
     image: hojindev/codeigniter_hmvc
     ports:
      - 80:80
     volumes:
       - $PWD:/var/www/html/
-    environment:
-      - APACHE_DOCUMENT_ROOT="/var/www/html/m"
-
-  web:
-    image: hojindev/codeigniter_hmvc
-    ports:
-      - 81:80
-    volumes:
-      - $PWD:/var/www/html/
-    environment:
-      - APACHE_DOCUMENT_ROOT="/var/www/html/www"
-
-  admin:
-    image: hojindev/codeigniter_hmvc
-    ports:
-      - 82:80
-    volumes:
-      - $PWD:/var/www/html/
-    environment:
-      - APACHE_DOCUMENT_ROOT="/var/www/html/admin"
