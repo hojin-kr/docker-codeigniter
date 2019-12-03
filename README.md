@@ -1,71 +1,25 @@
-# Docker + CodeIgniter 1.7.3 + HMVC
+# Docker + CodeIgniter 1.7.3 + HMVC + Multi Container
 
-This image serves as a starting point for legacy CodeIgniter projects.
-
-> The [CodeIgniter User Guide](https://github.com/aspendigital/docker-codeigniter/tree/master/CodeIgniter_1.7.3/user_guide) is served up by default if nothing has been copied or mounted to `/var/www/html`.
+This image serves as a starting point for legacy CodeIgniter projects.  
+기본 코드이그나이터, PHP 이미지에서 시작됬습니다. HMVC 커스텀 코드이크나이터 환경 및 멀티 컨테이너를 지원합니다.
 
 ## Supported Tags
 
-- `php5.6-apache`, `latest`: [Dockerfile](https://github.com/aspendigital/docker-codeigniter/blob/master/Dockerfile)
-- `php7.1-apache` : [Dockerfile.php7.1](https://github.com/aspendigital/docker-codeigniter/blob/master/Dockerfile.php7.1)
-
+- `latest`: [Dockerfile](https://github.com/hojin-kr/docker-codeigniter-hmvc/blob/master/Dockerfile)
 
 ## Quick Start
 
-Start a container using the latest image, mapping your local port 80 to the container's port 80:
+Start a container using the latest image, mapping your muti container info(port, volumes, documentRoot)  
+docker-compose.yml 파일을 열어서 멀티 컨테이너로 띄울 서비스를 작성합니다. 각각의 포트와 apache_document_root 환경변수를 설정합니다. 여기서 설정한 서비스 이름으로 로그를 구분하게됩니다.
 
 ```shell
-$ docker run -p 80:80 --name codeigniter aspendigital/codeigniter:latest
-# `CTRL-C` to stop
-$ docker rm codeigniter  # Destroys the container
+$ vi docker-compose.yml
 ```
 
-> If there is a port conflict, you will receive an error message from the Docker daemon. Try mapping to an open local port (-p 8080:80) or shut down the container or server that is on the desired port.
-
- - Visit [http://localhost](http://localhost) using your browser.
-  - Hit `CTRL-C` to stop the container. Running a container in the foreground will send log outputs to your terminal.
-
-Run the container in the background by passing the `-d` option:
+설정을 마쳤으면 최상단 디렉토리에서 도커를 띄워 서비스를 시작합니다.
 
 ```shell
-$ docker run -p 80:80 --name codeigniter -d aspendigital/codeigniter:latest
-$ docker stop codeigniter  # Stops the container. To restart `docker start codeigniter`
-$ docker rm codeigniter  # Destroys the container
-```
-
-## Working with Local Files
-
-Using Docker volumes, you can mount local files inside a container.
-
-> The CodeIgniter system folder resides in `/var/www/codeigniter`. You may need to update the `$system_folder` variable in your project's `include/ci_include.php` file.
-
-The container uses the working directory `/var/www/html` for the web server document root. You can introduce your local project code with bind-mounted volumes:
-
-```shell
-$ docker run -p 80:80 --rm \
-  -v $(pwd):/var/www/html \
-  aspendigital/codeigniter:latest
-```
-
-Save yourself some keyboards strokes, utilize [docker-compose](https://docs.docker.com/compose/overview/) by introducing a `docker-compose.yml` file to your project folder:
-
-
-```yml
-# docker-compose.yml
-version: '2.2'
-services:
-  web:
-    image: aspendigital/codeigniter:latest
-    ports:
-      - 80:80
-    volumes:
-      - $PWD:/var/www/html
-```
-With the above example saved in working directory, run:
-
-```shell
-$ docker-compose up -d # start services defined in `docker-compose.yml` in the background
-$ docker-compose down # stop and destroy
+$ docker-compose up
 ```
 
 ### Environment Variables
