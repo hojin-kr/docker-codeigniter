@@ -38,3 +38,6 @@ The following variables trigger actions run by the entrypoint script at runtime.
 | PHP_UPLOAD_MAX_FILESIZE | 32M | Override value for `upload_max_filesize` in docker-ci-php.ini |
 | TZ | UTC | Override value for `data.timezone` in docker-ci-php.ini |
 |APACHE_DOCUMENT_ROOT|"/var/www/html/m"|Document root|
+
+### original git
+[https://github.com/aspendigital/docker-codeigniter](https://github.com/aspendigital/docker-codeigniter)
