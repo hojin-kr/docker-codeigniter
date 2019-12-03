@@ -2,7 +2,7 @@
 version: '2.2'
 services:
   web:
-    image: hojindev/codeigniter_hmvc
+    image: hojindev/codeigniter-virtualhost
     ports:
      - 80:80
     volumes:

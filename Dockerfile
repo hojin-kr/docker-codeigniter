@@ -44,10 +44,6 @@ RUN a2enmod rewrite
 
 COPY ./000-default.conf /etc/apache2/sites-available/000-default.conf
 
-COPY --chown=www-data:www-data ./CodeIgniter_1.7.3 /usr/src/CodeIgniter_1.7.3
-
-RUN ln -s /usr/src/CodeIgniter_1.7.3/system /var/www/codeigniter
-
 COPY docker-entrypoint /usr/local/bin/
 
 ENTRYPOINT ["docker-entrypoint"]
