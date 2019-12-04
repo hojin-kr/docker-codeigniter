@@ -19,6 +19,12 @@ $ git clone https://github.com/hojin-kr/docker-codeigniter-virtualhost.git
 ```shell
 $ vi 000-default.conf
 ```
+  
+Container를 빌드합니다.
+
+```shell
+$ docker build -t hojindev/codeigniter-virtualhost .
+```
 
 코드이그나이터 루트 디렉토리에 docker-compose.yml을 복사하고 도커를 띄웁니다.
 
