@@ -22,7 +22,7 @@ RUN { \
     echo 'upload_max_filesize=32M'; \
     echo 'post_max_size=32M'; \
     echo 'memory_limit=128M'; \
-    echo 'date.timezone="UTC"'; \
+    echo 'date.timezone="Asia/Seoul"'; \
     echo 'session.auto_start=1'; \
   } > /usr/local/etc/php/conf.d/docker-ci-php.ini
 
