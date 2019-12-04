@@ -28,9 +28,21 @@ $ docker build -t hojindev/codeigniter-virtualhost .
 
 코드이그나이터 루트 디렉토리에 docker-compose.yml을 복사하고 도커를 띄웁니다.
 
+~~~
+# docker-compose.yml
+version: '2.2'
+services:
+  web:
+    image: hojindev/codeigniter-virtualhost
+    ports:
+     - 80:80
+    volumes:
+      - $PWD:/var/www/html/
+~~~
+
 ```shell
 $ docker-compose up
-```
+```  
 
 ## 변경 사항
     - mysql, mysqli 둘다 설치
