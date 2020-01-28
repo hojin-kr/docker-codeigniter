@@ -40,6 +40,30 @@ services:
       - $PWD:/var/www/html/
 ~~~
 
+or
+
+데이터베이스까지 함께 설치
+~~~
+# docker-compose.yml
+version: '2.2'
+services:
+  web:
+    image: hojindev/codeigniter-virtualhost
+    ports:
+     - 80:80
+    volumes:
+      - $PWD:/var/www/html/
+  db:
+    image: mysql:5.7
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+    volumes:
+      - $PWD/../mysql_dev:/var/lib/mysql
+
+~~~
+
 ```shell
 $ docker-compose up
 ```  
